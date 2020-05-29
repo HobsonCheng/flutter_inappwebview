@@ -222,7 +222,8 @@ public class InAppWebViewClient extends WebViewClient {
     view.clearFocus();
     view.requestFocus();
 
-    String js = InAppWebView.platformReadyJS.replaceAll("[\r\n]+", "");
+    String js = JavaScriptBridgeInterface.flutterInAppBroserJSClass.replaceAll("[\r\n]+", "");
+    js += InAppWebView.platformReadyJS.replaceAll("[\r\n]+", "");
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       webView.evaluateJavascript(js, (ValueCallback<String>) null);
